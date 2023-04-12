@@ -13,8 +13,8 @@ func CreateTodo(c *gin.Context) {
 	if err := c.BindJSON(&todo); err != nil {
 		return
 	}
-	models.CreateTodo(&todo)
-	c.IndentedJSON(http.StatusCreated, todo)
+	data := models.CreateTodo(&todo)
+	c.IndentedJSON(http.StatusCreated, data)
 }
 
 func GetAllTodo(c *gin.Context) {

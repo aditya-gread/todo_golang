@@ -23,7 +23,7 @@ func init() {
 }
 
 func CreateTodo(todo *Todo) *Todo {
-	db.Exec("INSERT INTO Todo (id, title, description, status) VALUES (?, ?, ?,?)", todo.Id, todo.Title, todo.Description, todo.Status)
+	db.Exec("INSERT INTO Todo (title, description, status) VALUES ( ?, ?,?)", todo.Title, todo.Description, todo.Status)
 	return todo
 }
 
