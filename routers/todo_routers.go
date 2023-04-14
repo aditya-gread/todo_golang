@@ -7,8 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// function that assigns path to actions
 var RegisterToDoRouters = func(r *gin.Engine) {
 
+	// to solve the issue of cors data passed using options
 	r.Use(func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
@@ -26,5 +28,5 @@ var RegisterToDoRouters = func(r *gin.Engine) {
 	r.GET("/todo/:id", controllers.GetTodoByID)
 	r.PUT("/todo/update/:id", controllers.UpdateTodo)
 	r.POST("/todo/delete/:id", controllers.DeleteTodo)
-	// r.GET("/todo/search/:word", controllers.SearchTodo)
+	r.GET("/todo/search/:word", controllers.SearchTodo)
 }
